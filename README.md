@@ -31,7 +31,6 @@ elgibbor@ubuntu:~/alx_c/printf$ ./a.out
 Best\x0ASchool
 ```
 Handle the following length modifiers for non-custom conversion specifiers:`l`, `h`. Conversion specifiers to handle: `d`, `i`, `u`, `o`, `x`, `X`.  
-  
 In addition to the above conversion specifiers, the custom implementation will also handle the following custom conversion specifier:  
 * `%b`: Print an unsigned integer in binary format.  
 Our `_printf()` function will also support the following flag characters for non-custom conversion specifiers: `+`, `space`, `#`
