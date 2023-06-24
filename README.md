@@ -19,8 +19,17 @@ The `_printf()` function is designed to handle the following conversion specifie
 * Handle the field width for non-custom conversion specifiers.
 * Handle the precision for non-custom conversion specifiers.
 * Handle the 0 flag character for non-custom conversion specifiers.
-* `S`: prints the string. Non-printable characters (0 < ASCII value < 32 or >= 127) are printed this way: `\x`, followed by the ASCII code value in hexadecimal (upper case - always 2 characters).
-  
+* `S`: prints the string. Non-printable characters (0 < ASCII value < 32 or >= 127) are printed this way: `\x`, followed by the ASCII code value in hexadecimal (upper case - always 2 characters).⤵️
+```
+int main(void)
+{
+    _printf("%S\n", "Best\nSchool");
+    return (0);
+}
+elgibbor@ubuntu:~/alx_c/printf$ gcc -Wall -Wextra -Werror -pedantic -std=gnu89 main.c
+elgibbor@ubuntu:~/alx_c/printf$ ./a.out
+Best\x0ASchool
+```
 Handle the following length modifiers for non-custom conversion specifiers:`l`, `h`. Conversion specifiers to handle: `d`, `i`, `u`, `o`, `x`, `X`.  
   
 In addition to the above conversion specifiers, the custom implementation will also handle the following custom conversion specifier:  
