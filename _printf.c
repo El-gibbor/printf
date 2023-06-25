@@ -7,37 +7,38 @@
 */
 int _printf(const char *format, ...)
 {
-    va_list argList;
-    int i, lenStr = 0;
-    int (*formatFunc)(va_list, int);
+	va_list argList;
+	int c, lenStr = 0;
+	char ch;
+	char *formatStr;
+;
+	va_start(argList, format);
+	for (c = 0; format[c]; c++)
+	{
+		if (format[c] != '%')
+			lenStr += printChar(format[c]);
+		else if (format[c] == '%')
+		{
+			c++;
+			if (format[c] == 'c')
+			{
+				ch = (va_arg(argList, int));
+				lenStr += printChar(ch);
+			}
+			else if (format[c] == 's')
+			{
+				formatStr = va_arg(argList, char *);
+				if (!formatStr)
+					formatStr = "(null)";
+				lenStr += printStrLiteral(formatStr);
+			}
+			else if (format[c] == '%')
+				lenStr += printChar('%');
 
-    va_start(argList, format);
-    for (; *format; format++)
-    {
-        if (*format != '%')
-        {
-            lenStr += printStrLiteral((char *)format);
-            format += myStrlen((char *)format) - 1;
-        }
-        else
-        {
-            format++;
-            if (*format == '%')
-            {
-                lenStr += printChar(argList, lenStr);
-            }
-            else
-             formatFunc = getFormatFunc((char *)format);
-             if (formatFunc)
-                lenStr += formatFunc(argList, lenStr);
-             else
-             {
-                putChar('%');
-                putChar(*format);
-                lenStr += 2;
-             }
-        }
-    }
-    va_end(argList);
-    return(lenStr);
+			else if (format[c] == '\0')
+				return (-1);
+		}
+	}
+	va_end(argList);
+	return (lenStr);
 }
