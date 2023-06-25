@@ -5,8 +5,6 @@
 #include <stdarg.h>
 
 int putChar(char c);
-int myStrlen(char *str);
-int myStrcmp(char *s1, char *s2);
 int printStrLiteral(char *str);
 int _printf(const char *format, ...);
 int (*getFormatFunc(char spec))(va_list, int);
