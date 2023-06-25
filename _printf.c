@@ -7,12 +7,37 @@
 */
 int _printf(const char *format, ...)
 {
-    int lenStr = 0;
+    va_list argList;
+    int i, lenStr = 0;
+    int (*formatFunc)(va_list, int);
 
+    va_start(argList, format);
     for (; *format; format++)
     {
-        putChar(*format);
-        lenStr++;
+        if (*format != '%')
+        {
+            lenStr += printStrLiteral((char *)format);
+            format += myStrlen((char *)format) - 1;
+        }
+        else
+        {
+            format++;
+            if (*format == '%')
+            {
+                lenStr += printChar(argList, lenStr);
+            }
+            else
+             formatFunc = getFormatFunc((char *)format);
+             if (formatFunc)
+                lenStr += formatFunc(argList, lenStr);
+             else
+             {
+                putChar('%');
+                putChar(*format);
+                lenStr += 2;
+             }
+        }
     }
+    va_end(argList);
     return(lenStr);
 }
