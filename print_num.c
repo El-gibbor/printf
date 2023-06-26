@@ -12,7 +12,7 @@ int print_num(va_list ap)
 
 	if (n < 0)
 	{
-		len += prnt_ch('-');
+		len += print_ch('-');
 		n = -n;
 	}
 
@@ -25,7 +25,7 @@ int print_num(va_list ap)
 
 	while (d)
 	{
-		len += prnt_ch((num / d) + '0');
+		len += print_ch((num / d) + '0');
 		num %= 10;
 		d /= 10;
 	}
