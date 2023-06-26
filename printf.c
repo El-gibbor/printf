@@ -17,9 +17,6 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			/* incomplete format specifier */
-			if (format[i + 1] == '\0')
-				return (-1);
 			switch (format[i + 1])
 			{
 				case 's':
@@ -35,6 +32,8 @@ int _printf(const char *format, ...)
 				case '%':
 					len += print_ch('%');
 					break;
+				default:
+					return (-1);
 			}
 			i++;
 		}
