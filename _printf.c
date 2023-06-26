@@ -21,17 +21,11 @@ int _printf(const char *format, ...)
 		{
 			c++;
 			if (format[c] == 'c')
-			{
 				lenStr += printChar(argList);
-			}
 			else if (format[c] == 's')
-			{
-			
 				lenStr += printStrLiteral(argList);
-			}
 			else if (format[c] == '%')
 				lenStr += putChar('%');
-
 			/* else if (format[c] == '\0') return (-1); */
 		}
 	}
