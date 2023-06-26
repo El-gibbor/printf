@@ -17,8 +17,8 @@ int printChar(char c);
 */
 typedef struct format
 {
-    char c;
-    int (*formatFunc)(va_list);
+	char c;
+	int (*formatFunc)(va_list);
 } formatStruct;
 
 #endif
