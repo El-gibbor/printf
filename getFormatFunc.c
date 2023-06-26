@@ -8,16 +8,16 @@
 int (*getFormatFunc(char c))(va_list)
 {
 	int i = 0;
-	formatStruct format[] = {
+	formatStruct formSpec[] = {
 		{'c', printChar},
 		{'s', printStrLiteral},
 		{'\0', NULL} /* sentinal value for termination*/
 	};
 
-	for (; format[i].c; i++)
+	for (; formSpec[i].c; i++)
 	{
-		if (format[i].c == c)
-			return (format[i].formatFunc);
+		if (formSpec[i].c == c)
+			return (formSpec[i].formatFunc);
 	}
 	return (NULL);
 }
