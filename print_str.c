@@ -11,7 +11,7 @@ int print_str(va_list ap)
 	int i;
 
 	if (s == NULL)
-		s == "(null)";
+		s = "(null)";
 
 	for (i = 0; s[i] != '\0'; i++)
 		print_ch(s[i]);
