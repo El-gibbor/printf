@@ -1,13 +1,39 @@
 #include "main.h"
 
 /**
- * _printf - prints characters
+ * print_rem - helper function
+ * @s: a pointer to a string to be printed
+ * @str_pos: a pointer to the position of the string
+ * Return: length of the string
+ */
+int print_rem(const char *s, int *str_pos)
+{
+	int len = 0, i = *str_pos;
+
+	if (s[i - 2] == '%')
+		return (-1);
+	len += print_ch(s[i - 1]);
+	if (s[i] == ' ')
+		len += print_ch(s[i++]);
+	while (s[i] == ' ')
+		i++;
+	if (s[i] == 'h' || s[i] == 'l')
+		i++;
+	len += print_ch(s[i]);
+
+	*str_pos = i;
+	return (len);
+}
+
+/**
+ * _printf - prints characters to stdout
  * @format: string
- * Return: len of the string
+ * Return: the length of its output
+ * or -1 if unsuccessful
  */
 int _printf(const char *format, ...)
 {
-	int i, len = 0, c;
+	int i, len = 0, c, temp_len;
 	va_list ap;
 
 	if (format == NULL)
@@ -35,16 +61,10 @@ int _printf(const char *format, ...)
 				case '\0':
 					return (-1);
 				default:
-					if (format[i - 2] == '%')
+					temp_len = print_rem(format, &i);
+					if (temp_len == -1)
 						return (-1);
-					len += print_ch(format[i - 1]);
-					if (format[i] == ' ')
-						len += print_ch(format[i++]);
-					while (format[i] == ' ')
-						i++;
-					if (format[i] == 'h' || format[i] == 'l')
-						i++;
-					len += print_ch(format[i]);
+					len += temp_len;
 			}
 			i++;
 		}
