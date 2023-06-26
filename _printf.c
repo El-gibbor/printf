@@ -9,9 +9,7 @@ int _printf(const char *format, ...)
 {
 	va_list argList;
 	int c, lenStr = 0;
-	char ch;
-	char *formatStr;
-;
+
 	va_start(argList, format);
 	for (c = 0; format[c]; c++)
 	{
