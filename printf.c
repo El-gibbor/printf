@@ -18,26 +18,26 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case 's':
-					l = prnt_str(ap);
+					l = print_str(ap);
 					if (l < 0)
-						return -1;
+						return (-1);
 					len += l;
 					break;
 				case 'd':
-					len += prnt_num(ap);
+					len += print_num(ap);
 					break;
 				case 'c':
 					c = va_arg(ap, int);
-					len += prnt_ch(c);
+					len += print_ch(c);
 					break;
 				case '%':
-					len += prnt_ch('%');
+					len += print_ch('%');
 					break;
 			}
 			i++;
 		}
 		else
-			len += prnt_ch(format[i]);
+			len += print_ch(format[i]);
 	}
 	va_end(ap);
 	return (len);
