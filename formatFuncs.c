@@ -1,7 +1,18 @@
 #include "main.h"
 
 /**
- * printStrLiteral - prints the literal string pointed to by (format)
+ * printChar - prints just a charcter
+ * @c: character to be printed
+ * Return: length of character
+*/
+int printChar(char c)
+{
+    putChar(c);
+    return (1);
+}
+
+/**
+ * printStrLiteral - prints a string literal pointed in the parameter
  * @str: string to be printed
  * Return: string length
  */
@@ -19,16 +30,14 @@ int printStrLiteral(char *str)
 	}
 	return (lenStr);
 }
-/**
- * printChar - prints just a charcter
- * @c: character to be printed
- * Return: length of character
-*/
-int printChar(va_list argList, int lenChar)
-{
-    char theChar = va_arg(argList, int);
 
-    putChar(theChar);
-    lenChar++;
-    return (lenChar);
+/**
+ * putChar - prints one character to stdout
+ * @c: character to print
+ * Return: system call to fd, mem address & n byte
+ */
+int putChar(char c)
+{
+	return (write(1, &c, 1));
+	
 }
