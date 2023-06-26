@@ -9,24 +9,30 @@ int _printf(const char *format, ...)
 {
 	va_list argList;
 	int c, lenStr = 0;
-
+	char ch;
+	char *formatStr;
+;
 	va_start(argList, format);
 	for (c = 0; format[c]; c++)
 	{
 		if (format[c] != '%')
-			lenStr += printChar(format[c]);
+			lenStr += putChar(format[c]);
 		else if (format[c] == '%')
 		{
 			c++;
-			if (format[c] == '%')
-				lenStr += printChar('%');
-			else
+			if (format[c] == 'c')
 			{
-				int (*formatFunc)(va_list) = getFormatFunc(format[c]);
-
-				if (formatFunc)
-					lenStr += formatFunc(argList);
+				lenStr += printChar(argList);
 			}
+			else if (format[c] == 's')
+			{
+			
+				lenStr += printStrLiteral(argList);
+			}
+			else if (format[c] == '%')
+				lenStr += putChar('%');
+
+			/* else if (format[c] == '\0') return (-1); */
 		}
 	}
 	va_end(argList);
@@ -34,15 +40,15 @@ int _printf(const char *format, ...)
 }
 
 /**
- * getFormatFunc - returns a pointer the corresponding format func
- * @c: character to return its corresponding format func
- * Return: func pointer to the corresponding format func
+ * selectFunc - selects the correct func to perform the operation
+ * @c: character to be compared (format specifier)
+ * Return: ptr to the func that corresponds with the format specifier
 */
-int (*getFormatFunc(char c))(va_list)
+int (*selectFunc(char formSpec))(va_list argList)
 {
-	if (!charcmp(c, 'c'))
+	if (!charcmp(formSpec, 'c'))
 		return (printChar);
-	else if (!charcmp(c, 's'))
+	else if (!charcmp(formSpec, 's'))
 		return (printStrLiteral);
 	else
 		return (NULL);

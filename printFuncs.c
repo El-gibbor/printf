@@ -16,8 +16,9 @@ int charcmp(char c1, char c2)
  * @str: string to be printed
  * Return: string length
  */
-int printStrLiteral(char *str)
+int printStrLiteral(va_list argList)
 {
+	char *str = va_arg(argList, char *);
 	int lenStr = 0;
 
 	if (str && *str)
@@ -36,8 +37,10 @@ int printStrLiteral(char *str)
  * @c: character to be printed
  * Return: length of character
 */
-int printChar(char c)
+int printChar(va_list argList)
 {
+	char c = va_arg(argList, int);
+
 	putChar(c);
 	return (1);
 }
