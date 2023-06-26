@@ -16,7 +16,7 @@ int (*getFormatFunc(char c))(va_list)
 
 	for (; formSpec[i].c; i++)
 	{
-		if (!(charcmp(formSpec[i].c, c)))
+		if (!(charcmp(formSpec[i].c, c))) /*negation evaluates it to 1(true)*/
 			return (formSpec[i].formatFunc);
 	}
 	return (NULL);
