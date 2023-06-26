@@ -7,9 +7,11 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, len = 0, c, l;
+	int i, len = 0, c;
 	va_list ap;
 
+	if (format == NULL)
+		return (-1);
 	va_start(ap, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -18,10 +20,7 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case 's':
-					l = print_str(ap);
-					if (l < 0)
-						return (-1);
-					len += l;
+					len += print_str(ap);
 					break;
 				case 'd':
 					len += print_num(ap);
