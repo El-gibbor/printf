@@ -34,9 +34,9 @@ int _printf(const char *format, ...)
 }
 
 /**
- * selectFunc - selects the correct func to perform the operation
+ * selectFunc - selects correct func for operation
  * @c: character to be compared (format specifier)
- * Return: ptr to the func that corresponds with the format specifier
+ * Return: ptr to func that corresponds with the format specifier
 */
 int (*selectFunc(char formSpec))(va_list argList)
 {
