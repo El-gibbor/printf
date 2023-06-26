@@ -7,7 +7,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, len = 0, c, l;
+	int i, len = 0, c;
 	va_list ap;
 
 	if (format == NULL)
@@ -20,10 +20,7 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case 's':
-					l = print_str(ap);
-					if (l < 0)
-						return (-1);
-					len += l;
+					len += print_str(ap);
 					break;
 				case 'd':
 					len += print_num(ap);
@@ -35,6 +32,8 @@ int _printf(const char *format, ...)
 				case '%':
 					len += print_ch('%');
 					break;
+				default:
+					return (-1);
 			}
 			i++;
 		}
