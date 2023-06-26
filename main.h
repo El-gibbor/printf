@@ -1,4 +1,3 @@
-/* Header guard */
 #ifndef PRINT_F
 #define PRINT_F
 
