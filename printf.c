@@ -13,11 +13,11 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(ap, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format[i] != '\0';)
 	{
 		if (format[i] == '%')
 		{
-			switch (format[i + 1])
+			switch (format[++i])
 			{
 				case 's':
 					len += print_str(ap);
@@ -30,15 +30,26 @@ int _printf(const char *format, ...)
 					len += print_ch(c);
 					break;
 				case '%':
-					len += print_ch('%');
+					len += print_ch(format[i]);
 					break;
-				default:
+				case '\0':
 					return (-1);
+				default:
+					if (format[i - 2] == '%')
+						return (-1);
+					len += print_ch(format[i - 1]);
+					if (format[i] == ' ')
+						len += print_ch(format[i++]);
+					while (format[i] == ' ')
+						i++;
+					if (format[i] == 'h' || format[i] == 'l')
+						i++;
+					len += print_ch(format[i]);
 			}
 			i++;
 		}
 		else
-			len += print_ch(format[i]);
+			len += print_ch(format[i++]);
 	}
 	va_end(ap);
 	return (len);
