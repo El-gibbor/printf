@@ -32,4 +32,6 @@ struct conv
 #define BIN 2
 #define OCT 8
 
+const char hex_l = "123456789abcdef";
+const char hex_u = "123456789ABCDEF";
 #endif
