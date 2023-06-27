@@ -29,6 +29,7 @@ int print_oct(va_list arg_l)
  */
 int print_hex_l(va_list arg_l)
 {
+	const char *hex_l = "123456789abcdef";
 	unsigned int n = va_arg(arg_l, unsigned int);
 	unsigned int val_d;
 	int len = 0;
@@ -53,6 +54,7 @@ int print_hex_l(va_list arg_l)
  */
 int print_hex_u(va_list arg_l)
 {
+	const char *hex_u = "123456789ABCDEF";
 	unsigned int n = va_arg(arg_l, unsigned int);
 	unsigned int val_d;
 	int len = 0;
