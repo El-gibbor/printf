@@ -8,6 +8,7 @@
 #include <limits.h>
 
 /* function types */
+int format_spec(const char *, int *, int *, va_list);
 int print_ch(va_list);
 int print_int(va_list);
 int print_unint(va_list);
@@ -20,7 +21,11 @@ int _printf(const char *format, ...);
 int put_char(char);
 size_t cal_val(size_t n, int base);
 
-/* struct */
+/**
+ * struct conv - template for format conversion
+ * @c: the format specifiers
+ * @f: ptr to the corresponding func for @c
+ */
 typedef struct conv spec_conv;
 struct conv
 {
