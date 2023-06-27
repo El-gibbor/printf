@@ -1,5 +1,6 @@
 #include "main.h"
 
+int print_rem(const char *, int *, int *);
 /**
  * _printf - produces a formatted output
  * @format: character string to be formatted & printed
@@ -68,5 +69,33 @@ int format_spec(const char *str, int *len, int *str_pos, va_list arg_l)
 	}
 	if (str[pos] == fmt[i].c)
 		return (-1);
+	if (print_rem(str, str_pos, len) == -1)
+		return (-1);
+	return (*len);
+}
+
+/**
+ * print_rem - helper function
+ * @s: a pointer to a string to be printed
+ * @str_pos: a pointer to the position of the string
+ * @len: a pointer to the len of the string
+ * Return: length of the string
+ */
+int print_rem(const char *s, int *str_pos, int *len)
+{
+	int i = *str_pos;
+
+	if (s[i - 2] == '%')
+		return (-1);
+	*len += put_char(s[i - 1]);
+	if (s[i] == ' ')
+		*len += put_char(s[i++]);
+	while (s[i] == ' ')
+		i++;
+	if (s[i] == 'h' || s[i] == 'l')
+		i++;
+	*len += put_char(s[i++]);
+
+	*str_pos = i;
 	return (*len);
 }
