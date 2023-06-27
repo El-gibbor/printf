@@ -31,6 +31,28 @@ int print_int(va_list arg_l)
 }
 
 /**
+ * print_unint - prints integers
+ * @arg_l: arguments to be printed
+ * Return: lenght of arguments
+ */
+int print_unint(va_list arg_l)
+{
+	unsigned int n = va_arg(arg_l, unsigned int);
+	unsigned int val_d;
+	int len = 0;
+
+	val_d = (unsigned int) cal_val(n, 10);
+
+	while (val_d)
+	{
+		len += put_char(n / val_d + '0');
+		n %= val_d;
+		val_d /= 10;
+	}
+	return (len);
+}
+
+/**
  * cal_val - calculates place of the first digit
  * @n: the number givien
  * @base: base of the number
