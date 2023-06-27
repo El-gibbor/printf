@@ -22,7 +22,8 @@ int _printf(const char *format, ...)
 			if (format[pos] == '%')
 				len += put_char(format[pos++]);
 			else
-				format_spec(format, &len, &pos, arg_l);
+				if (format_spec(format, &len, &pos, arg_l) == -1)
+					return (-1);
 		}
 		else
 			len += put_char(format[pos++]);
@@ -65,5 +66,7 @@ int format_spec(const char *str, int *len, int *str_pos, va_list arg_l)
 		else
 			i++;
 	}
+	if (str[pos] == fmt[i].c)
+		return (-1);
 	return (*len);
 }
