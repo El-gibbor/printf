@@ -24,3 +24,31 @@ int _printf(const char *format, ...)
 	va_end(arg_l);
 	return (len);
 }
+
+int format_spec(const char *str, int *len, int *str_pos, va_list arg_l)
+{
+	spec_conv fmt[] = {
+		{'c', print_ch},
+		{'d', print_int},
+		{'i', print_int},
+		{'s', print_str},
+		{'u', print_unint},
+		{'o', print_oct},
+		{'b', print_bin},
+		{'x', print_hex_l},
+		{'X', print_hex_u},
+		{'\0', NULL}};
+	int pos = *str_pos, i = 0;
+
+	while (fmt[i].c != '\0')
+	{
+		if (fmt[i].c == str[pos])
+		{
+			*len += fmt[i].f(arg_l);
+			return (*len);
+		}
+		else
+			i++;
+	}
+	return (*len);
+}
