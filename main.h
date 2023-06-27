@@ -8,7 +8,7 @@
 #include <limits.h>
 
 /* function types */
-int print_ch(char);
+int print_ch(va_list);
 int print_int(va_list);
 int print_unint(va_list);
 int print_hex_l(va_list);
@@ -17,6 +17,7 @@ int print_bin(va_list);
 int print_oct(va_list);
 int print_str(va_list);
 int _printf(const char *format, ...);
+int put_char(char);
 
 /* struct */
 typedef struct conv spec_conv;
