@@ -16,7 +16,10 @@ int _printf(const char *format, ...)
 		if (format[pos] == '%')
 		{
 			pos++;
-			format_spec(format, &len, &pos, arg_l);
+			if (format[pos] == '%')
+				len += put_char(format[pos++]);
+			else
+				format_spec(format, &len, &pos, arg_l);
 		}
 		else
 			len += put_char(format[pos++]);
