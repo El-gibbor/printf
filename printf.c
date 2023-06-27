@@ -28,8 +28,7 @@ int print_rem(const char *s, int *str_pos)
 /**
  * _printf - prints characters to stdout
  * @format: string
- * Return: the length of its output
- * or -1 if unsuccessful
+ * Return: length of its output or -1 if unsuccessful
  */
 int _printf(const char *format, ...)
 {
