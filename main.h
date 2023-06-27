@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <limits.h>
 
 /* function types */
 int print_ch(char);
