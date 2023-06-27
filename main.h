@@ -8,7 +8,7 @@
 
 /* function types */
 int print_ch(char);
-int print_num(va_list);
+int print_int(va_list);
 int print_str(va_list);
 int _printf(const char *format, ...);
 
