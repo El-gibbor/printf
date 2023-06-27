@@ -18,6 +18,7 @@ int print_oct(va_list);
 int print_str(va_list);
 int _printf(const char *format, ...);
 int put_char(char);
+size_t cal_val(size_t n, int base);
 
 /* struct */
 typedef struct conv spec_conv;
