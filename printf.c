@@ -19,12 +19,20 @@ int _printf(const char *format, ...)
 			format_spec(format, &len, &pos, arg_l);
 		}
 		else
-			put_char(format[pos++]);
+			len += put_char(format[pos++]);
 	}
 	va_end(arg_l);
 	return (len);
 }
 
+/**
+ * format_spec - checks for a format specifier
+ * @str: the argument string
+ * @len: a pointer to the length of characters being printed
+ * @str_pos: current position in a string
+ * @arg_l: next argument to be printed
+ * Return: the length of characters printed
+ */
 int format_spec(const char *str, int *len, int *str_pos, va_list arg_l)
 {
 	spec_conv fmt[] = {
@@ -44,6 +52,7 @@ int format_spec(const char *str, int *len, int *str_pos, va_list arg_l)
 	{
 		if (fmt[i].c == str[pos])
 		{
+			(*str_pos)++;
 			*len += fmt[i].f(arg_l);
 			return (*len);
 		}
