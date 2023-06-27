@@ -1,6 +1,28 @@
 #include "main.h"
 
 /**
+ * print_bin - prints digits in binary
+ * @arg_l: decimal args to be printed in binary
+ * Return: Binary value of the argument
+ */
+int print_bin(va_list arg_l)
+{
+	unsigned long n = va_arg(arg_l, int);
+	unsigned long val_d;
+	int len = 0;
+
+	val_d = cal_val(n, BIN);
+
+	while (val_d)
+	{
+		len += put_char(n / val_d + '0');
+		n %= val_d;
+		val_d /= BIN;
+	}
+	return (len);
+}
+
+/**
  * print_int - prints integers
  * @arg_l: arguments to be printed
  * Return: lenght of arguments
