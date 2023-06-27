@@ -8,7 +8,7 @@
 #include <limits.h>
 
 /* function types */
-int format_spec(char);
+int format_spec(const char *, int *, int *, va_list);
 int print_ch(va_list);
 int print_int(va_list);
 int print_unint(va_list);
