@@ -88,10 +88,6 @@ int print_rem(const char *s, int *str_pos, int *len)
 	if (s[i - 2] == '%')
 		return (-1);
 	*len += put_char(s[i - 1]);
-	if (s[i] == ' ')
-		*len += put_char(s[i++]);
-	while (s[i] == ' ')
-		i++;
 	*len += put_char(s[i++]);
 
 	*str_pos = i;
