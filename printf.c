@@ -20,6 +20,8 @@ int _printf(const char *format, ...)
 		if (format[pos] == '%')
 		{
 			pos++;
+			if (format[pos] == '\0')
+				return (-1);
 			if (format[pos] == '%')
 				len += put_char(format[pos++]);
 			else
@@ -67,8 +69,6 @@ int format_spec(const char *str, int *len, int *str_pos, va_list arg_l)
 		else
 			i++;
 	}
-	if (str[pos] == fmt[i].c)
-		return (-1);
 	if (print_rem(str, str_pos, len) == -1)
 		return (-1);
 	return (*len);
@@ -91,8 +91,6 @@ int print_rem(const char *s, int *str_pos, int *len)
 	if (s[i] == ' ')
 		*len += put_char(s[i++]);
 	while (s[i] == ' ')
-		i++;
-	if (s[i] == 'h' || s[i] == 'l')
 		i++;
 	*len += put_char(s[i++]);
 
