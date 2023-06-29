@@ -1,12 +1,10 @@
 #include <limits.h>
-#include <stdio.h>
 #include "../main.h"
 #define ZERO 0
 
 /**
- * main - Entry point
- *
- * Return: Always 0
+ * main - test cases
+ * Return: 0
  */
 int main(void)
 {
@@ -75,8 +73,8 @@ int main(void)
 	printf("Len:[%d]\n", len2);
 	_printf("Reverse:[%r]\n", "I am a string !");
 	printf("Reversed:[%r]\n", "I am a string !");
-	// _printf("Unknown:[%r]\n");
-	// printf("Unknown:[%r]\n");
+	/* _printf("Unknown:[%r]\n");*/
+	/* printf("Unknown:[%r]\n");*/
 	_printf("Binary:[%b]\n", 98);
 	printf("Binary:[%b]\n", 98);
 	_printf("Decimal:[%i]\n", 58);
@@ -260,5 +258,5 @@ int main(void)
 	printf("num1:[%d]\n", num1);
 	printf("num2:[%d]\n", num2);
 
-	return (0);
+	return (0);
 }
