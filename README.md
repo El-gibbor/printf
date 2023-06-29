@@ -1,6 +1,6 @@
 ![prin](https://github.com/ehoneahobed/alx-low_level_programming/assets/121310192/886374db-445c-4236-97fd-41d87432d349)  
 # _printf()  
-This repo contains a custom reimplementation of C's `printf()` function. It is a team effort of [Benard](github.com/teflon40) and [Elgibbor](https://www.linkedin.com/in/elgibbor/), aimed  to demonstrate our understanding of the concepts learned thus far in the [Alx](alxafrica.com) low-level programming track in C language and apply them to create a practical utility.  
+This repo contains a custom reimplementation of C's `printf()` function. It is a team effort of [Bernard](github.com/teflon40) and [Elgibbor](https://www.linkedin.com/in/elgibbor/), aimed  to demonstrate our understanding of the concepts learned thus far in the [Alx](alxafrica.com) low-level programming track in C language and apply them to create a practical utility.  
 This custom `_printf()` function will handle various conversion specifiers and provide additional functionalities as required.  
 __Prototype:__ `int _printf(const char *format, ...);`  
 __Returns:__ The number of characters printed (excluding the null byte used to end output to strings), write output to stdout, the standard output stream format is a character string. The format string is composed of zero or more directives.
