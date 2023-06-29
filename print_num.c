@@ -7,11 +7,11 @@
  */
 int print_bin(va_list arg_l)
 {
-	unsigned long n = va_arg(arg_l, int);
+	unsigned int n = va_arg(arg_l, unsigned int);
 	unsigned long val_d;
 	int len = 0;
 
-	val_d = cal_val(n, BIN);
+	val_d = (unsigned long) cal_val(n, BIN);
 
 	while (val_d)
 	{
@@ -84,7 +84,7 @@ size_t cal_val(size_t n, int base)
 {
 	int place_val = 1;
 
-	while (n > (size_t)base)
+	while (n >= (size_t)base)
 	{
 		place_val *= base;
 		n /= base;
