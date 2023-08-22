@@ -20,7 +20,7 @@ The `_printf()` function is designed to handle the following conversion specifie
 * Handle the precision for non-custom conversion specifiers.
 * Handle the 0 flag character for non-custom conversion specifiers.
 * `S`: prints the string. Non-printable characters (0 < ASCII value < 32 or >= 127) are printed this way: `\x`, followed by the ASCII code value in hexadecimal (upper case - always 2 characters).⤵️
-```
+```C
 int main(void)
 {
     _printf("%S\n", "Best\nSchool");
