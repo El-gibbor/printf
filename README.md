@@ -38,4 +38,5 @@ Our `_printf()` function will also support the following flag characters for non
 To minimize the number of calls to the underlying `write` function, our custom `_printf()` function will use a local buffer of 1024 characters. The data will be written to the output in chunks, ensuring efficient utilization of system resources.  
 ## Authors/Contributors  
 Benard Frimpong - [Github](github.com/teflon40/)  
-Chiagoziem Elgibbor - [Linkedin](https://www.linkedin.com/in/elgibbor/) | [Blog](https://elgibbor.hashnode.dev/) | [Twitter](https://twitter.com/Mr_Elgibbor)
+Chiagoziem Elgibbor - [Linkedin](https://www.linkedin.com/in/elgibbor/) | [Blog](https://elgibbor.hashnode.dev/) | [Twitter](https://twitter.com/Mr_Elgibbor)  
+[Here](https://elgibbor.hashnode.dev/writing-your-own-printf-function-a-head-start) is an article I wrote that can give you a head start to implement your own printf function.
